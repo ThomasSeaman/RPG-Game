@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <img src="breakingbad.png">
+        <div id="characters" class="row"></div>
+        <div id="gameplay" class="row">
+            <button id="fightbutton">Fight</button>
+        </div>
+        
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/game.js"></script>
+    <script>
+        $(document).ready(function(){
+            var chosenHero
+            var chosenEnemy
+            var isHeroChosen
+            var isEnemyChosen
+            var isHeroAlive
+            var isEnemyAlive
+            var fight
+
+            function initGame () {
+                isHeroChosen = false
+                isEnemyChosen = false
+                // generates characters
+                for (var i =0 ; i< charArr.length; i++){
+                    var num = Math.floor(12/charArr.length)
+                    var charThing = $("<div class='myChar col-md-"+num+"' value='"+i+"'><img src='"
+                    +charArr[i].image+"'style='width:150px;height:150px;'/></div")
+                    $("#characters").append(charThing)
+                }
+            }
+            $(document).on("click",".myChar",function(){
+                if(isHeroChosen === false){
+                chosenHero = charArr[$(this).attr("value")]
+                console.log(chosenHero)
+                $(this).addClass("fader")
+                isHeroChosen = true
+                }
+                else if(isEnemyChosen === false && chosenHero.name != charArr [$(this).attr("value")].name) {
+                    chosenEnemy = charArr[$(this).attr("value")]
+                    console.log(chosenEnemy)
+                    $(this).addClass("fader")
+                    isEnemyChosen = true   
+                } 
+            
+
+            })
+
+            $("#fightbutton").on("click",function(){
+                // console.log("fightbutton")
+                console.log(chosenHero)
+                // console.log(chosenEnemy)
+                console.log(chosenHero.hp)
+                console.log(chosenEnemy.hp)
+                
+            })
+
+           
+            // name, hp, strength, image
+            // grab images for characters
+            var charArr = [
+                {
+                name : "WalterWhite",
+                hp: 50,
+                strength: 50,
+                image: "walterwhite.jpg"
+                },
+                {
+                name : "Mike",
+                hp: 50,
+                strength: 50,
+                image: "mike.jpg"
+                },
+                {
+                name : "JessePinkman",
+                hp: 50,
+                strength: 50,
+                image: "jessepinkman.jpg"
+                },
+                {
+                name : "SaulGoodman",
+                hp: 50,
+                strength: 50,
+                image: "saulgoodman.jpg"
+                },
+                {
+                name : "GusFring",
+                hp: 50,
+                strength: 50,
+                image: "gusfring.jpg"
+                },
+                {
+                name : "HankSchrader",
+                hp: 50,
+                strength: 50,
+                image: "hankschrader.jpg"
+                }
+            ]
+            initGame() 
+            // invoking the function above, might need to add more syntax to this. 
+        })
+    </script>
+</body>
+</html>
