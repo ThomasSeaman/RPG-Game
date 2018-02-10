@@ -14,16 +14,21 @@
         <div id="characters" class="row"></div>
         <div id="gameplay" class="row">
             <div class="col-lg-4">
+                <p id="selecthero">Pick a hero from the option above.</p>
                 <p id="hero"></p>
+                <p id="herohp"></p>
             </div>
             <div class="col-lg-4">
                 <p id="fightbutton">
                     <input type="image" src="fightbutton.png" alt="Fight!" width="150" height="150">
                 </p>
+                <p id="fighttext">FIGHT!</p>
                     <!-- <button id="fightbutton" img src="fightbutton.png">Fight</button> -->
             </div>
             <div class="col-lg-4">
+                <p id="selectenemy">Pick an enemy from the option above.</p>
                 <p id="enemy" ></p>
+                <p id="enemyhp"></p>
             </div>
             
         </div>
@@ -40,7 +45,7 @@
             var isHeroAlive
             var isEnemyAlive
             var fight
-
+            
             function initGame () {
                 isHeroChosen = false
                 isEnemyChosen = false
@@ -52,6 +57,8 @@
                     $("#characters").append(charThing)
                 }
             }
+
+        
             $(document).on("click",".myChar",function(){
                 if(isHeroChosen === false){
                     chosenHero = charArr[$(this).attr("value")]
@@ -59,6 +66,7 @@
                     $(this).addClass("fader")
                     isHeroChosen = true
                     $("#hero").append("<img src='"+chosenHero.image+"'style='width:300px;height:300px;'/>")
+                    $("#herohp").html("HP: " + chosenHero.hp)
                 }
                 else if(isEnemyChosen === false && chosenHero.name != charArr [$(this).attr("value")].name) {
                     chosenEnemy = charArr[$(this).attr("value")]
@@ -66,58 +74,62 @@
                     $(this).addClass("fader")
                     isEnemyChosen = true
                     $("#enemy").append("<img src='"+chosenEnemy.image+"'style='width:300px;height:300px;'/>")
+                    $("#enemyhp").html("HP: " + chosenEnemy.hp)
                 } 
         
             })
 
             $("#fightbutton").on("click",function(){
                 // console.log("fightbutton")
-                console.log(chosenHero)
+                // console.log(chosenHero)
                 // console.log(chosenEnemy)
+                // console.log("Hero attack = " + chosenHero.attack)
+                // console.log("Enemy attack = " + chosenEnemy.attack)
+                // console.log(chosenHero.hp - chosenEnemy.attack)
+                // console.log(chosenEnemy.hp - chosenHero.attack)
+                $("#herohp").html("HP: " + (chosenHero.hp -= chosenEnemy.attack))
+                $("#enemyhp").html("HP: " + (chosenEnemy.hp -= chosenHero.attack))
                 console.log(chosenHero.hp)
-                console.log(chosenEnemy.hp)
-                $("#fightbutton").html(chosenHero.hp)
-                $("#fightbutton").html(chosenEnemy.hp)
+                
             })
-
            
             // name, hp, strength, image
             // grab images for characters
             var charArr = [
                 {
                 name : "WalterWhite",
-                hp: 50,
-                strength: 50,
+                hp: 100,
+                attack: Math.floor(Math.random() * 15) + 1,
                 image: "walterwhite.jpg"
                 },
                 {
                 name : "Mike",
-                hp: 50,
-                strength: 50,
+                hp: 100,
+                attack: Math.floor(Math.random() * 15) + 1,
                 image: "mike.jpg"
                 },
                 {
                 name : "JessePinkman",
-                hp: 50,
-                strength: 50,
+                hp: 100,
+                attack: Math.floor(Math.random() * 15) + 1,
                 image: "jessepinkman.jpg"
                 },
                 {
                 name : "SaulGoodman",
-                hp: 50,
-                strength: 50,
+                hp: 100,
+                attack: Math.floor(Math.random() * 15) + 1,
                 image: "saulgoodman.jpg"
                 },
                 {
                 name : "GusFring",
-                hp: 50,
-                strength: 50,
+                hp: 100,
+                attack: Math.floor(Math.random() * 15) + 1,
                 image: "gusfring.jpg"
                 },
                 {
                 name : "HankSchrader",
-                hp: 50,
-                strength: 50,
+                hp: 100,
+                attack: Math.floor(Math.random() * 15) + 1,
                 image: "hankschrader.jpg"
                 }
             ]

@@ -23,3 +23,14 @@ body{
 #button{
     
 }
+
+#enemyhp,#herohp,#fighttext{
+    color:white;
+    font-size:30px;
+}
+
+#selecthero,#selectenemy{
+    color:white;
+    font-size:14px;
+    font-style: italic;
+}
