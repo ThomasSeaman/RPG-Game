@@ -87,10 +87,13 @@
                 // console.log("Enemy attack = " + chosenEnemy.attack)
                 // console.log(chosenHero.hp - chosenEnemy.attack)
                 // console.log(chosenEnemy.hp - chosenHero.attack)
-                $("#herohp").html("HP: " + (chosenHero.hp -= chosenEnemy.attack))
-                $("#enemyhp").html("HP: " + (chosenEnemy.hp -= chosenHero.attack))
+                $("#herohp").html("HP: " + (chosenHero.hp -= chosenEnemy.attack() ))
+                $("#enemyhp").html("HP: " + (chosenEnemy.hp -= chosenHero.attack() ))
                 console.log(chosenHero.hp)
-                
+                if(chosenHero.hp > 0 &&){
+                    
+                }
+            
             })
            
             // name, hp, strength, image
@@ -99,37 +102,49 @@
                 {
                 name : "WalterWhite",
                 hp: 100,
-                attack: Math.floor(Math.random() * 15) + 1,
+                attack : function(){
+                    return Math.floor(Math.random() * 15) + 1
+                    },
                 image: "walterwhite.jpg"
                 },
                 {
                 name : "Mike",
                 hp: 100,
-                attack: Math.floor(Math.random() * 15) + 1,
+                attack: function(){
+                    return Math.floor(Math.random() * 15) + 1
+                    },
                 image: "mike.jpg"
                 },
                 {
                 name : "JessePinkman",
                 hp: 100,
-                attack: Math.floor(Math.random() * 15) + 1,
+                attack: function(){
+                    return Math.floor(Math.random() * 15) + 1
+                    },
                 image: "jessepinkman.jpg"
                 },
                 {
                 name : "SaulGoodman",
                 hp: 100,
-                attack: Math.floor(Math.random() * 15) + 1,
+                attack: function(){
+                    return Math.floor(Math.random() * 15) + 1
+                    },
                 image: "saulgoodman.jpg"
                 },
                 {
                 name : "GusFring",
                 hp: 100,
-                attack: Math.floor(Math.random() * 15) + 1,
+                attack: function(){
+                    return Math.floor(Math.random() * 15) + 1
+                    },
                 image: "gusfring.jpg"
                 },
                 {
                 name : "HankSchrader",
                 hp: 100,
-                attack: Math.floor(Math.random() * 15) + 1,
+                attack: function(){
+                    return Math.floor(Math.random() * 15) + 1
+                    },
                 image: "hankschrader.jpg"
                 }
             ]
