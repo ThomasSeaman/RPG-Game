@@ -13,7 +13,19 @@
         <img src="breakingbad.png">
         <div id="characters" class="row"></div>
         <div id="gameplay" class="row">
-            <button id="fightbutton">Fight</button>
+            <div class="col-lg-4">
+                <p id="hero"></p>
+            </div>
+            <div class="col-lg-4">
+                <p id="fightbutton">
+                    <input type="image" src="fightbutton.png" alt="Fight!" width="150" height="150">
+                </p>
+                    <!-- <button id="fightbutton" img src="fightbutton.png">Fight</button> -->
+            </div>
+            <div class="col-lg-4">
+                <p id="enemy" ></p>
+            </div>
+            
         </div>
         
     </div>
@@ -42,19 +54,20 @@
             }
             $(document).on("click",".myChar",function(){
                 if(isHeroChosen === false){
-                chosenHero = charArr[$(this).attr("value")]
-                console.log(chosenHero)
-                $(this).addClass("fader")
-                isHeroChosen = true
+                    chosenHero = charArr[$(this).attr("value")]
+                    console.log(chosenHero)
+                    $(this).addClass("fader")
+                    isHeroChosen = true
+                    $("#hero").append("<img src='"+chosenHero.image+"'style='width:300px;height:300px;'/>")
                 }
                 else if(isEnemyChosen === false && chosenHero.name != charArr [$(this).attr("value")].name) {
                     chosenEnemy = charArr[$(this).attr("value")]
                     console.log(chosenEnemy)
                     $(this).addClass("fader")
-                    isEnemyChosen = true   
+                    isEnemyChosen = true
+                    $("#enemy").append("<img src='"+chosenEnemy.image+"'style='width:300px;height:300px;'/>")
                 } 
-            
-
+        
             })
 
             $("#fightbutton").on("click",function(){
@@ -63,7 +76,8 @@
                 // console.log(chosenEnemy)
                 console.log(chosenHero.hp)
                 console.log(chosenEnemy.hp)
-                
+                $("#fightbutton").html(chosenHero.hp)
+                $("#fightbutton").html(chosenEnemy.hp)
             })
 
            

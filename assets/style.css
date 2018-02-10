@@ -1,7 +1,25 @@
+body{
+    background-color: #cccccc;
+    background-image:url("smokebackground.jpg")
+}
+
 .fader{
     opacity:.5;
 }
 
 body{
     background-color:darkgrey;
+}
+
+#gameplay{
+    text-align: center;
+    margin-top: 50px;
+}
+
+#characters{
+    margin-top:50px;
+}
+
+#button{
+    
 }
