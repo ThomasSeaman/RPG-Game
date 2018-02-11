@@ -24,6 +24,8 @@
                 </p>
                 <p id="fighttext">FIGHT!</p>
                     <!-- <button id="fightbutton" img src="fightbutton.png">Fight</button> -->
+                <p id="heroattackpower"></p>
+                <p id="enemyattackpower"></p>
             </div>
             <div class="col-lg-4">
                 <p id="selectenemy">Pick an enemy from the option above.</p>
@@ -78,6 +80,12 @@
                 } 
         
             })
+            // function to reload page after a loss
+            function lossreset(){
+                location.reload()
+            }
+            // function to reset enemy after a win
+           
 
             $("#fightbutton").on("click",function(){
                 // console.log("fightbutton")
@@ -90,15 +98,33 @@
                 $("#herohp").html("HP: " + (chosenHero.hp -= chosenEnemy.attack() ))
                 $("#enemyhp").html("HP: " + (chosenEnemy.hp -= chosenHero.attack() ))
                 // console.log(chosenHero.hp)
-                // if(chosenHero.hp > 0 &&){
-                    
+                // $("#heroattackpower").html(chosenHero.name + " attacks " + chosenEnemy.name + " for "  )
+                // $("#heroattackpower").html(chosenHero.name + "attacks for "+ choseHero.attack)  
+                // $("#enemyattackpower").html(chosenEnemy.name + "attacks for " + chosenEnemy.attack) 
+                if(chosenHero.hp <= 0 && chosenEnemy.hp >= 0){
+                    $("#herohp").html(chosenHero.name + " has been defeated...")
+                    $("#enemyhp").html(chosenEnemy.name + " is victorius!")
+                    // alert("Game over, you lose.")
+                    $("#fighttext").html("Click fight button to start a new game")
+                    $("#fightbutton").on("click",function(){
+                        lossreset()
+                    })
+                }
+                else if(chosenEnemy.hp <= 0 && chosenHero.hp >= 0){
+                    $("#enemyhp").html(chosenEnemy.name + " has been defeated...")
+                    $("#herohp").html(chosenHero.name + " is victorius!")
+                    $("#fightbutton").on("click",function(){
+                        lossreset()
+                    })
+                }
+
                 })
            
             // name, hp, strength, image
             // grab images for characters
             var charArr = [
                 {
-                name : "WalterWhite",
+                name : "Walter White",
                 hp: 100,
                 attack : function(){
                     return Math.floor(Math.random() * 15) + 1
@@ -114,7 +140,7 @@
                 image: "mike.jpg"
                 },
                 {
-                name : "JessePinkman",
+                name : "Jesse Pinkman",
                 hp: 100,
                 attack: function(){
                     return Math.floor(Math.random() * 15) + 1
@@ -122,7 +148,7 @@
                 image: "jessepinkman.jpg"
                 },
                 {
-                name : "SaulGoodman",
+                name : "Saul Goodman",
                 hp: 100,
                 attack: function(){
                     return Math.floor(Math.random() * 15) + 1
@@ -130,7 +156,7 @@
                 image: "saulgoodman.jpg"
                 },
                 {
-                name : "GusFring",
+                name : "Gus Fring",
                 hp: 100,
                 attack: function(){
                     return Math.floor(Math.random() * 15) + 1
@@ -138,7 +164,7 @@
                 image: "gusfring.jpg"
                 },
                 {
-                name : "HankSchrader",
+                name : "Hank Schrader",
                 hp: 100,
                 attack: function(){
                     return Math.floor(Math.random() * 15) + 1

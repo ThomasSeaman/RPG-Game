@@ -24,7 +24,7 @@ body{
     
 }
 
-#enemyhp,#herohp,#fighttext{
+#enemyhp,#herohp,#fighttext,#heroattackpower,#enemyattackpower{
     color:white;
     font-size:30px;
 }
